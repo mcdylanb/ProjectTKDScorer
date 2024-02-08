@@ -7,11 +7,16 @@
   padding:0;
  }
 
+ .grid {
+  display:grid;
+  grid-template-rows:25% 50% 25%;
+  height: 100vh;
+  background-color:black;
+ }
  .score {
   background-color:black;
   display:grid;
   grid-template-columns: 50% 50%;
-  height: 100vh;
  }
 
  .blue-score{
@@ -22,11 +27,33 @@
   background-color:red;
  }
 
- .blue-score,.red-score{
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
+ .blue-score{
+  display:grid;
+  grid-template-columns: 25% 75%;
   color:white;
   font-size: 5rem;
  }
+.red-score{
+
+  display:grid;
+  grid-template-columns: 75% 25%;
+  color:white;
+  font-size: 5rem;
+}
+ .blue-score>h1,.red-score>h1{
+  justify-content:center;
+  align-items:center;
+  display:flex
+ }
+
+ .blue-score>.control,.red-score>.control{
+  justify-content:center;
+  align-items:center;
+  display:grid
+ }
+.control>button{
+  padding: 1rem;
+  border:none;
+  margin:0.25rem;
+ }
+
