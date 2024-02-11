@@ -22,8 +22,7 @@ function MyTimer({ expiryTimestamp }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <div style={{ fontSize: '100px' }}>
-        <span>{minutes}</span>:
-        <span>{seconds}</span>
+        <span>{minutes}</span>:<span>{seconds}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
       <button onClick={start} type="button">
@@ -129,80 +128,23 @@ function Hello() {
   }
   return (
     <div className="grid">
-      <div className="timer">
-        <div className="roundTracker">
-          <div
-            className="round1"
-            onClick={() => changeRoundWinner(round1Winner, setRound1Winner)}
-            style={{ backgroundColor: `${round1Winner}` }}
-          >
-            R1
-          </div>
-          <div
-            className="round2"
-            onClick={() => changeRoundWinner(round2Winner, setRound2Winner)}
-            style={{ backgroundColor: `${round2Winner}` }}
-          >
-            R2
-          </div>
-          <div
-            className="round3"
-            onClick={() => changeRoundWinner(round3Winner, setRound3Winner)}
-            style={{ backgroundColor: `${round3Winner}` }}
-          >
-            R3
-          </div>
-        </div>
-        <MyTimer expiryTimestamp={time} />
-      </div>
-      <div className="score">
-        <div className="blue-score">
-          <div className="control">
-            <button type="button" onClick={increaseBlueScore}>
-              +
-            </button>
-            <button type="button" onClick={decreaseBlueScore}>
-              -
-            </button>
-            {/* blue GJ Counter  */}
-            <button type="button" onClick={decreaseBlueGJCounter}>
-              -
-            </button>
-            <button type="button" onClick={increaseBlueGJCounter}>
-              +
-            </button>
-          </div>
-          <h1>{blueScore}</h1>
-        </div>
-        <div className="red-score">
-          <h1>{redScore}</h1>
-          <div className="control">
-            <button type="button" onClick={increaseRedScore}>
-              +
-            </button>
-            <button type="button" onClick={decreaseRedScore}>
-              -
-            </button>
-            {/* Red GJ Counter  */}
-            <button type="button" onClick={decreaseRedGJCounter}>
-              -
-            </button>
-            <button type="button" onClick={increaseRedGJCounter}>
-              +
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="GJCounter">
-        <div>
-          <div>GAM-JEOM</div>
-          {blueGJCounter}
-        </div>
-        <div>
-          <div>GAM-JEOM</div>
-          {redGJCounter}
-        </div>
-      </div>
+      <div className="blue-flag">empty</div>
+      <div className="blue-name">BNAME</div>
+      <div className="red-name">RNAME</div>
+      <div className="red-flag">empty</div>
+
+      <div className="blue-score-control">BS CONTROL</div>
+      <div className="red-score-control">RS CONTROL</div>
+
+      <div className="blue-score">BS SCORE</div>
+      <div className="game-mode">GAME MODE</div>
+      <div className="timer">TIMER</div>
+      <div className="timer-control">TIMER CONTROLLER</div>
+      <div className="red-score">RS SCORE</div>
+
+      <div className="blue-gj">BGJ</div>
+      <div className="game-mode-control">GAME CONTROL</div>
+      <div className="red-gj">RGJ</div>
     </div>
   );
 }

@@ -9,37 +9,138 @@
 
  .grid {
   display:grid;
-  grid-template-rows:25% 50% 25%;
+  grid-template-rows:repeat(5,1fr);
+  grid-template-columns:repeat(8, 1fr);
   height: 100vh;
+  background-color:white;
+ }
+ .blue-name{
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color:blue;
+ }
+ .red-name{
+  grid-column-start: 5;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color:red;
+ }
+ .blue-flag{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+ }
+ .red-flag{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 1;
+ }
+
+ .blue-score-control{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color:blue;
+ }
+
+ .red-score-control{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color:red;
+ }
+
+ .blue-score{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color:cyan;
+ }
+ .red-score{
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color:pink;
+ }
+
+ .game-mode{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
   background-color:black;
+  color:white;
  }
  .score {
   background-color:black;
   display:grid;
   grid-template-columns: 50% 50%;
  }
-
- .blue-score{
-  background-color: blue;
+ .timer{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color:grey;
+  color:white;
+ }
+ .timer-control{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color:darkgray;
+  color:white;
  }
 
- .red-score{
-  background-color:red;
+ .blue-gj{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color:darkgray;
+  color:white;
  }
 
- .blue-score{
+ .red-gj{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color:darkgray;
+  color:white;
+ }
+
+ .game-mode-control{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color:grey;
+  color:white;
+ }
+ /* .blue-score{
   display:grid;
   grid-template-columns: 25% 75%;
   color:white;
   font-size: 5rem;
- }
-.red-score{
+ } */
+/* .red-score{
 
   display:grid;
   grid-template-columns: 75% 25%;
   color:white;
   font-size: 5rem;
-}
+} */
  .blue-score>h1,.red-score>h1{
   justify-content:center;
   align-items:center;
@@ -56,9 +157,9 @@
   border:none;
   margin:0.25rem;
  }
- .timer {
+ /* .timer {
   background-color:white;
- }
+ } */
  .roundTracker{
   display:flex;
   justify-content: center;
