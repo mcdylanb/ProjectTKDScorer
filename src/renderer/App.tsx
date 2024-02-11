@@ -22,7 +22,7 @@ function MyTimer({ expiryTimestamp }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <div style={{ fontSize: '100px' }}>
-        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
+        <span>{minutes}</span>:
         <span>{seconds}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
@@ -78,6 +78,9 @@ function Hello() {
   const [round2Winner, setRound2Winner] = useState('white');
   const [round3Winner, setRound3Winner] = useState('white');
 
+  const [blueGJCounter, setBlueGJCounter] = useState(0);
+  const [redGJCounter, setRedGJCounter] = useState(0);
+
   const time = new Date();
   time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
 
@@ -93,6 +96,22 @@ function Hello() {
   }
   function decreaseRedScore() {
     setRedScore(redScore - 1);
+  }
+
+  //GJ counter
+  function increaseBlueGJCounter() {
+    setBlueGJCounter(blueGJCounter + 1);
+  }
+  function increaseRedGJCounter() {
+    setRedGJCounter(redGJCounter + 1);
+  }
+
+  function decreaseBlueGJCounter() {
+    setBlueGJCounter(blueGJCounter - 1);
+  }
+
+  function decreaseRedGJCounter() {
+    setRedGJCounter(redGJCounter - 1);
   }
 
   // set winner of round
@@ -145,6 +164,13 @@ function Hello() {
             <button type="button" onClick={decreaseBlueScore}>
               -
             </button>
+            {/* blue GJ Counter  */}
+            <button type="button" onClick={decreaseBlueGJCounter}>
+              -
+            </button>
+            <button type="button" onClick={increaseBlueGJCounter}>
+              +
+            </button>
           </div>
           <h1>{blueScore}</h1>
         </div>
@@ -157,10 +183,26 @@ function Hello() {
             <button type="button" onClick={decreaseRedScore}>
               -
             </button>
+            {/* Red GJ Counter  */}
+            <button type="button" onClick={decreaseRedGJCounter}>
+              -
+            </button>
+            <button type="button" onClick={increaseRedGJCounter}>
+              +
+            </button>
           </div>
         </div>
       </div>
-      <div>footer</div>
+      <div className="GJCounter">
+        <div>
+          <div>GAM-JEOM</div>
+          {blueGJCounter}
+        </div>
+        <div>
+          <div>GAM-JEOM</div>
+          {redGJCounter}
+        </div>
+      </div>
     </div>
   );
 }
