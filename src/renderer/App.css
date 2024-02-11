@@ -59,4 +59,15 @@
  .timer {
   background-color:white;
  }
+ .roundTracker{
+  display:flex;
+  justify-content: center;
+ }
+
+ .round1,.round2,.round3{
+  height:25px;
+  width:25px;
+  margin: 0.5rem;
+  border: black solid 2px;
+ }
 

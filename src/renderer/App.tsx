@@ -46,6 +46,26 @@ function MyTimer({ expiryTimestamp }) {
       >
         Restart
       </button>
+      <button
+        onClick={() => {
+          const time = new Date();
+          time.setSeconds(time.getSeconds() + 90);
+          restart(time, false);
+        }}
+        type="button"
+      >
+        Game
+      </button>
+      <button
+        onClick={() => {
+          const time = new Date();
+          time.setSeconds(time.getSeconds() + 60);
+          restart(time, false);
+        }}
+        type="button"
+      >
+        Break
+      </button>
     </div>
   );
 }
@@ -53,10 +73,12 @@ function MyTimer({ expiryTimestamp }) {
 function Hello() {
   const [blueScore, setBlueScore] = useState(20); // Initialize blueScore state
   const [redScore, setRedScore] = useState(20); // Initialize blueScore state
+  const [round1Winner, setRound1Winner] = useState('white');
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
 
+  //increment and decrement score of each player
   function increaseBlueScore() {
     setBlueScore(blueScore + 1);
   }
@@ -69,9 +91,34 @@ function Hello() {
   function decreaseRedScore() {
     setRedScore(redScore - 1);
   }
+
+  // set winner of round
+  function changeRoundWinner(roundWinner: string, setRoundWinner: Function) {
+    if (roundWinner === 'white') {
+      setRoundWinner('blue');
+      console.log('winner blue');
+    } else if (roundWinner === 'blue') {
+      setRoundWinner('red');
+      console.log('winner red');
+    } else {
+      setRoundWinner('white');
+      console.log('winner none');
+    }
+  }
   return (
     <div className="grid">
       <div className="timer">
+        <div className="roundTracker">
+          <div
+            className="round1"
+            onClick={()=>changeRoundWinner(round1Winner, setRound1Winner)}
+            style={{ backgroundColor: `${round1Winner}` }}
+          >
+            R1
+          </div>
+          <div className="round2">R2</div>
+          <div className="round3">R3</div>
+        </div>
         <MyTimer expiryTimestamp={time} />
       </div>
       <div className="score">
