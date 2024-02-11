@@ -22,7 +22,7 @@ function MyTimer({ expiryTimestamp }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <div style={{ fontSize: '100px' }}>
-        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
+        <span>{minutes}</span>:
         <span>{seconds}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
