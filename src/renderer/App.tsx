@@ -73,7 +73,10 @@ function MyTimer({ expiryTimestamp }) {
 function Hello() {
   const [blueScore, setBlueScore] = useState(20); // Initialize blueScore state
   const [redScore, setRedScore] = useState(20); // Initialize blueScore state
+  //round winner tracker
   const [round1Winner, setRound1Winner] = useState('white');
+  const [round2Winner, setRound2Winner] = useState('white');
+  const [round3Winner, setRound3Winner] = useState('white');
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
@@ -111,13 +114,25 @@ function Hello() {
         <div className="roundTracker">
           <div
             className="round1"
-            onClick={()=>changeRoundWinner(round1Winner, setRound1Winner)}
+            onClick={() => changeRoundWinner(round1Winner, setRound1Winner)}
             style={{ backgroundColor: `${round1Winner}` }}
           >
             R1
           </div>
-          <div className="round2">R2</div>
-          <div className="round3">R3</div>
+          <div
+            className="round2"
+            onClick={() => changeRoundWinner(round2Winner, setRound2Winner)}
+            style={{ backgroundColor: `${round2Winner}` }}
+          >
+            R2
+          </div>
+          <div
+            className="round3"
+            onClick={() => changeRoundWinner(round3Winner, setRound3Winner)}
+            style={{ backgroundColor: `${round3Winner}` }}
+          >
+            R3
+          </div>
         </div>
         <MyTimer expiryTimestamp={time} />
       </div>
