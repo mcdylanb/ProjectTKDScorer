@@ -176,9 +176,12 @@ function Hello(expiryTimestamp) {
         </button>
         <button
           onClick={() => {
-            // Restarts to 5 minutes timer
             const time = new Date();
-            time.setSeconds(time.getSeconds() + 300);
+            if (gameMode === 'GAME') {
+              time.setSeconds(time.getSeconds() + 90);
+            } else if (gameMode === 'BREAK') {
+              time.setSeconds(time.getSeconds() + 60);
+            }
             restart(time, false);
           }}
           type="button"
