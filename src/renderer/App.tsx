@@ -76,6 +76,7 @@ function Hello(expiryTimestamp) {
   }
   return (
     <div className="grid">
+      {/* FLAGS + NAMES */}
       <div className="blue-flag">empty</div>
       <div className="blue-name">
         <h1>BALAGTAS</h1>
@@ -85,6 +86,7 @@ function Hello(expiryTimestamp) {
       </div>
       <div className="red-flag">empty</div>
 
+      {/* SCORE CONTROLS + COUNTERS */}
       <div className="blue-score-control-container">
         <div className="control">
           <button type="button" onClick={increaseBlueScore}>
@@ -160,49 +162,30 @@ function Hello(expiryTimestamp) {
             <span>{minutes}</span>:<span>{seconds}</span>
           </div>
           <p>{isRunning ? 'Running' : 'Not running'}</p>
-          <button onClick={start} type="button">
-            Start
-          </button>
-          <button onClick={pause} type="button">
-            Pause
-          </button>
-          <button onClick={resume} type="button">
-            Resume
-          </button>
-          <button
-            onClick={() => {
-              // Restarts to 5 minutes timer
-              const time = new Date();
-              time.setSeconds(time.getSeconds() + 300);
-              restart(time, false);
-            }}
-            type="button"
-          >
-            Restart
-          </button>
-          <button
-            onClick={() => {
-              const time = new Date();
-              time.setSeconds(time.getSeconds() + 90);
-              restart(time, false);
-            }}
-            type="button"
-          >
-            Game
-          </button>
-          <button
-            onClick={() => {
-              const time = new Date();
-              time.setSeconds(time.getSeconds() + 60);
-              restart(time, false);
-            }}
-            type="button"
-          >
-            Break
-          </button>
         </div>
       </div>
-      <div className="timer-control">timer-control</div>
+      <div className="timer-control">
+        <button onClick={start} type="button">
+          Start
+        </button>
+        <button onClick={pause} type="button">
+          Pause
+        </button>
+        <button onClick={resume} type="button">
+          Resume
+        </button>
+        <button
+          onClick={() => {
+            // Restarts to 5 minutes timer
+            const time = new Date();
+            time.setSeconds(time.getSeconds() + 300);
+            restart(time, false);
+          }}
+          type="button"
+        >
+          Restart
+        </button>
+      </div>
       <div className="blue-gj">
         <h3>GAM-JEOM</h3>
         <h1>{blueGJCounter}</h1>
@@ -211,7 +194,34 @@ function Hello(expiryTimestamp) {
         <h3>GAM-JEOM</h3>
         <h1>{redGJCounter}</h1>
       </div>
-      <div className="game-mode-control">GAME MODE CONTROL</div>
+
+      {/* GAME MODE */}
+      <div className="game-mode-control">
+        <button
+          onClick={() => {
+            const time = new Date();
+            time.setSeconds(time.getSeconds() + 90);
+            restart(time, false);
+            setGameMode('GAME');
+            console.log(gameMode);
+          }}
+          type="button"
+        >
+          Game
+        </button>
+        <button
+          onClick={() => {
+            const time = new Date();
+            time.setSeconds(time.getSeconds() + 60);
+            restart(time, false);
+            setGameMode('BREAK');
+            console.log(gameMode);
+          }}
+          type="button"
+        >
+          Break
+        </button>
+      </div>
       <div className="blue-footer">footer</div>
       <div className="red-footer">footer</div>
     </div>
