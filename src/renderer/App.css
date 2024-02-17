@@ -9,56 +9,176 @@
 
  .grid {
   display:grid;
-  grid-template-rows:25% 50% 25%;
+  grid-template-rows:repeat(5,1fr);
+  grid-template-columns:repeat(8, 1fr);
   height: 100vh;
+  background-color:white;
+ }
+ .blue-name{
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #3461B9;
+ }
+ .red-name{
+  grid-column-start: 5;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #D43838;
+ }
+ .blue-flag{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #3461B9;
+ }
+ .red-flag{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #D43838;
+ }
+
+ .blue-score-control-container{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color: black;
+ }
+
+ .red-score-control-container{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color: black;
+ }
+
+ 
+
+ .blue-score-container{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color: #3461B9;
+ }
+ .red-score-container{
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  background-color: #D43838;
+ }
+
+ .game-mode{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
   background-color:black;
+  color:white;
  }
- .score {
+ .timer{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
   background-color:black;
-  display:grid;
-  grid-template-columns: 50% 50%;
- }
-
- .blue-score{
-  background-color: blue;
- }
-
- .red-score{
-  background-color:red;
- }
-
- .blue-score{
-  display:grid;
-  grid-template-columns: 25% 75%;
   color:white;
-  font-size: 5rem;
  }
-.red-score{
-
-  display:grid;
-  grid-template-columns: 75% 25%;
+ .timer-control{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color:black;
   color:white;
-  font-size: 5rem;
-}
- .blue-score>h1,.red-score>h1{
+ }
+
+ .blue-gj{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: #3461B9;
+  color:white;
+ }
+
+ .red-gj{
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: #D43838;
+  color:white;
+ }
+
+ .game-mode-control{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color:black;
+  color:white;
+ }
+
+ .blue-footer{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: #3461B9;
+  color:white;
+ }
+
+ .red-footer{
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: #D43838;
+  color:white;
+ }
+ /* NONE GRID PLACEMENT */
+
+ .blue-name>h1,.red-name>h1{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  height:100%;
+   
+ }
+ 
+ .blue-score-container>h1,.red-score-container>h1{
   justify-content:center;
   align-items:center;
-  display:flex
+  display:flex;
+  height:100%;
+  font-size: 10rem;
+  color:white;
  }
 
- .blue-score>.control,.red-score>.control{
+ .blue-score-control-container,.red-score-control-container{
   justify-content:center;
   align-items:center;
   display:grid
  }
+
 .control>button{
   padding: 1rem;
   border:none;
   margin:0.25rem;
  }
- .timer {
+ /* .timer {
   background-color:white;
- }
+ } */
  .roundTracker{
   display:flex;
   justify-content: center;
@@ -73,5 +193,27 @@
 
  .GJCounter{
   color: white;
+ }
+
+ .blue-gj,.red-gj{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  height:100%;
+  flex-direction:column;
+ }
+ .blue-gj>h1,.red-gj>h1{
+  font-size:3rem;
+ }
+ .blue-gj>h3,.red-gj>h3{
+  font-size:1rem;
+ }
+
+ .game-mode>h1{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:100%;
  }
 
