@@ -15,6 +15,22 @@ function Hello(expiryTimestamp) {
   const [blueGJCounter, setBlueGJCounter] = useState(0);
   const [redGJCounter, setRedGJCounter] = useState(0);
 
+  const [blueRoundWins, setBlueRoundWins] = useState(0);
+  const [redRoundWins, setRedRoundWins] = useState(0);
+  const [currentRound, setCurrentRound] = useState(0);
+
+  const [gameTimerStart, setGameTimerStart] = useState(false);
+  const [breakTimerStart, setBreakTimerStart] = useState(false);
+
+  //TODO Need to update into array
+  const [ref1BlueScore, setRef1BlueScore] = useState(0);
+  const [ref2BlueScore, setRef2BlueScore] = useState(0);
+  const [ref3BlueScore, setRef3BlueScore] = useState(0);
+  const [ref1RedScore, setRef1RedScore] = useState(0);
+  const [ref2RedScore, setRef2RedScore] = useState(0);
+  const [ref3RedScore, setRef3RedScore] = useState(0);
+  const [refereesBlueScoreSheet, setRefereesBlueScoreSheet] = useState([]);
+  const [refereesRedScoreSheet, setRefereesRedScoreSheet] = useState([]);
   const {
     totalSeconds,
     seconds,
@@ -28,7 +44,15 @@ function Hello(expiryTimestamp) {
     restart,
   } = useTimer({
     expiryTimestamp,
-    onExpire: () => console.warn('onExpire called'),
+    onExpire: () => {
+      if (gameTimerStart === true) {
+        setGameTimerStart(false);
+        startBreakMode();
+      } else if (breakTimerStart === true) {
+        setBreakTimerStart(false);
+        startGameMode();
+      }
+    },
   });
 
   //increment and decrement score of each player
@@ -61,6 +85,88 @@ function Hello(expiryTimestamp) {
     setRedGJCounter(redGJCounter - 1);
   }
 
+  //game loop
+  function startGameMode() {
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 90);
+    restart(time, false);
+    setGameMode('GAME');
+    console.log(gameMode);
+    setGameTimerStart(true);
+  }
+
+  function startBreakMode() {
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 30);
+    restart(time, false);
+    setGameMode('BREAK');
+    console.log(gameMode);
+    setBreakTimerStart(true);
+  }
+
+  function checkGameWinner() {
+    let winner = '';
+    if (currentRound < 2) {
+      if (blueRoundWins > 2) {
+        winner = 'blue';
+      } else if (redRoundWins > 2) {
+        winner = 'red';
+      } else {
+        winner = 'none';
+      }
+    } else {
+      winner = 'none';
+    }
+    return winner;
+  }
+
+  function identifyWinner() {
+    let roundWinner = '';
+    if (blueScore > redScore) {
+      roundWinner = 'blue';
+    } else if (redScore > blueScore) {
+      roundWinner = 'red';
+    } else {
+      roundWinner = 'tie';
+    }
+    console.log(roundWinner);
+    return roundWinner;
+  }
+
+  function ref1BlueScoreChange(event) {
+    // setRef1BlueScore(event.target.value);
+    setRefereesBlueScoreSheet[0](event.target.value);
+    console.log(refereesBlueScoreSheet[0]);
+  }
+
+  function ref1RedScoreChange(event) {
+    setRef1RedScore(event.target.value);
+    console.log(ref1RedScore);
+  }
+
+  function ref2BlueScoreChange(event) {
+    setRef2BlueScore(event.target.value);
+    console.log(ref2BlueScore);
+  }
+
+  function ref2RedScoreChange(event) {
+    setRef2RedScore(event.target.value);
+    console.log(ref2RedScore);
+  }
+  function ref3BlueScoreChange(event) {
+    setRef1BlueScore(event.target.value);
+    console.log(ref3BlueScore);
+  }
+
+  function ref3RedScoreChange(event) {
+    setRef1RedScore(event.target.value);
+    console.log(ref3RedScore);
+  }
+  function changeRoundScores() {
+    setBlueScore(refereesBlueScoreSheet[0]);
+    setRedScore(ref1RedScore);
+  }
+
   // set winner of round
   function changeRoundWinner(roundWinner: string, setRoundWinner: Function) {
     if (roundWinner === 'white') {
@@ -74,6 +180,7 @@ function Hello(expiryTimestamp) {
       console.log('winner none');
     }
   }
+
   return (
     <div className="grid">
       {/* FLAGS + NAMES */}
@@ -135,6 +242,7 @@ function Hello(expiryTimestamp) {
       <div className="timer">
         {' '}
         <div className="roundTracker">
+          // TODO: move into component
           <div
             className="round1"
             onClick={() => changeRoundWinner(round1Winner, setRound1Winner)}
@@ -175,11 +283,13 @@ function Hello(expiryTimestamp) {
           Resume
         </button>
         <button
+          // TODO: please move this to own function
           onClick={() => {
-            // Restarts to 5 minutes timer
-            const time = new Date();
-            time.setSeconds(time.getSeconds() + 300);
-            restart(time, false);
+            if (gameMode === 'GAME') {
+              startGameMode();
+            } else {
+              startBreakMode();
+            }
           }}
           type="button"
         >
@@ -197,30 +307,58 @@ function Hello(expiryTimestamp) {
 
       {/* GAME MODE */}
       <div className="game-mode-control">
-        <button
-          onClick={() => {
-            const time = new Date();
-            time.setSeconds(time.getSeconds() + 90);
-            restart(time, false);
-            setGameMode('GAME');
-            console.log(gameMode);
-          }}
-          type="button"
-        >
+        <button onClick={startGameMode} type="button">
           Game
         </button>
-        <button
-          onClick={() => {
-            const time = new Date();
-            time.setSeconds(time.getSeconds() + 60);
-            restart(time, false);
-            setGameMode('BREAK');
-            console.log(gameMode);
-          }}
-          type="button"
-        >
+        <button onClick={startBreakMode} type="button">
           Break
         </button>
+        <button onClick={identifyWinner} type="button">
+          Choose Winner
+        </button>
+        <div>
+          <div>
+            BLUE REFEREE
+            <br />
+            <input
+              type="number"
+              value={refereesBlueScoreSheet[1]}
+              onChange={setRefereesBlueScoreSheet}
+            />
+            <input
+              type="number"
+              value={ref2BlueScore}
+              onChange={ref2BlueScoreChange}
+            />
+            <input
+              type="number"
+              value={ref3BlueScore}
+              onChange={ref3BlueScoreChange}
+            />
+          </div>
+          <div>
+            RED REFEREE
+            <br />
+            <input
+              type="number"
+              value={ref1RedScore}
+              onChange={ref1RedScoreChange}
+            />
+            <input
+              type="number"
+              value={ref2RedScore}
+              onChange={ref2RedScoreChange}
+            />
+            <input
+              type="number"
+              value={ref3RedScore}
+              onChange={ref3RedScoreChange}
+            />
+          </div>
+          <button onClick={changeRoundScores} type="button">
+            change scores
+          </button>
+        </div>
       </div>
       <div className="blue-footer">footer</div>
       <div className="red-footer">footer</div>
