@@ -2,49 +2,8 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 import { useTimer } from 'react-timer-hook';
-
-function RoundTracker() {
-  const [round1Winner, setRound1Winner] = useState('white');
-  const [round2Winner, setRound2Winner] = useState('white');
-  const [round3Winner, setRound3Winner] = useState('white');
-  function changeRoundWinner(roundWinner: string, setRoundWinner: Function) {
-    if (roundWinner === 'white') {
-      setRoundWinner('blue');
-      console.log('winner blue');
-    } else if (roundWinner === 'blue') {
-      setRoundWinner('red');
-      console.log('winner red');
-    } else {
-      setRoundWinner('white');
-      console.log('winner none');
-    }
-  }
-  return (
-    <div className="roundTracker">
-      <div
-        className="round1"
-        onClick={() => changeRoundWinner(round1Winner, setRound1Winner)}
-        style={{ backgroundColor: `${round1Winner}` }}
-      >
-        R1
-      </div>
-      <div
-        className="round2"
-        onClick={() => changeRoundWinner(round2Winner, setRound2Winner)}
-        style={{ backgroundColor: `${round2Winner}` }}
-      >
-        R2
-      </div>
-      <div
-        className="round3"
-        onClick={() => changeRoundWinner(round3Winner, setRound3Winner)}
-        style={{ backgroundColor: `${round3Winner}` }}
-      >
-        R3
-      </div>
-    </div>
-  );
-}
+import ScoreControl from './Components/ScoreControl';
+import RoundTracker from './Components/RoundTracker';
 function Hello(expiryTimestamp) {
   const [blueScore, setBlueScore] = useState(20); // Initialize blueScore state
   const [redScore, setRedScore] = useState(20); // Initialize blueScore state
@@ -94,35 +53,20 @@ function Hello(expiryTimestamp) {
     },
   });
 
-  //increment and decrement score of each player
-  function increaseBlueScore() {
-    setBlueScore(blueScore + 1);
-  }
-  function decreaseBlueScore() {
-    setBlueScore(blueScore - 1);
-  }
-  function increaseRedScore() {
-    setRedScore(redScore + 1);
-  }
-  function decreaseRedScore() {
-    setRedScore(redScore - 1);
-  }
+  const handleBlueScoreChange = (newCount) => {
+    setBlueScore(newCount);
+  };
 
-  //GJ counter
-  function increaseBlueGJCounter() {
-    setBlueGJCounter(blueGJCounter + 1);
-  }
-  function increaseRedGJCounter() {
-    setRedGJCounter(redGJCounter + 1);
-  }
+  const handleBlueGJChange = (newCount) => {
+    setBlueGJCounter(newCount);
+  };
+  const handleRedScoreChange = (newCount) => {
+    setRedScore(newCount);
+  };
 
-  function decreaseBlueGJCounter() {
-    setBlueGJCounter(blueGJCounter - 1);
-  }
-
-  function decreaseRedGJCounter() {
-    setRedGJCounter(redGJCounter - 1);
-  }
+  const handleRedGJChange = (newCount) => {
+    setRedGJCounter(newCount);
+  };
 
   //game loop
   function startGameMode() {
@@ -234,38 +178,22 @@ function Hello(expiryTimestamp) {
 
       {/* SCORE CONTROLS + COUNTERS */}
       <div className="blue-score-control-container">
-        <div className="control">
-          <button type="button" onClick={increaseBlueScore}>
-            BLUE SCORE +
-          </button>
-          <button type="button" onClick={decreaseBlueScore}>
-            BLUE SCORE -
-          </button>
-          {/* Blue GJ Counter  */}
-          <button type="button" onClick={increaseBlueGJCounter}>
-            BLUE GJ +
-          </button>
-          <button type="button" onClick={decreaseBlueGJCounter}>
-            BLUE GJ -
-          </button>
-        </div>
+        <ScoreControl
+          score={blueScore}
+          gjcounter={blueGJCounter}
+          onCountChangeScore={handleBlueScoreChange}
+          onCountChangeGJ={handleBlueGJChange}
+          side="BLUE"
+        />
       </div>
       <div className="red-score-control-container">
-        <div className="control">
-          <button type="button" onClick={increaseRedScore}>
-            RED SCORE +
-          </button>
-          <button type="button" onClick={decreaseRedScore}>
-            RED SCORE -
-          </button>
-          {/* Red GJ Counter  */}
-          <button type="button" onClick={increaseRedGJCounter}>
-            RED GJ +
-          </button>
-          <button type="button" onClick={decreaseRedGJCounter}>
-            RED GJ -
-          </button>
-        </div>
+        <ScoreControl
+          score={redScore}
+          gjcounter={redGJCounter}
+          onCountChangeScore={handleRedScoreChange}
+          onCountChangeGJ={handleRedGJChange}
+          side="RED"
+        />
       </div>
       <div className="blue-score-container">
         <h1>{blueScore} </h1>
@@ -279,8 +207,7 @@ function Hello(expiryTimestamp) {
       </div>
       {/* TIMER */}
       <div className="timer">
-        <RoundTracker />
-        {' '}
+        <RoundTracker />{' '}
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '100px' }}>
             <span>{minutes}</span>:<span>{seconds}</span>
