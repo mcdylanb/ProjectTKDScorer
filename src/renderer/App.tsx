@@ -5,8 +5,8 @@ import { useTimer } from 'react-timer-hook';
 import ScoreControl from './Components/ScoreControl';
 import RoundTracker from './Components/RoundTracker';
 function Hello(expiryTimestamp) {
-  const [blueScore, setBlueScore] = useState(20); // Initialize blueScore state
-  const [redScore, setRedScore] = useState(20); // Initialize blueScore state
+  const [blueScore, setBlueScore] = useState(0); // Initialize blueScore state
+  const [redScore, setRedScore] = useState(0); // Initialize blueScore state
   const [gameMode, setGameMode] = useState('BREAK'); // Initialize blueScore state
   //round winner tracker
 
@@ -167,14 +167,14 @@ function Hello(expiryTimestamp) {
   return (
     <div className="grid">
       {/* FLAGS + NAMES */}
-      <div className="blue-flag">empty</div>
+      <div className="blue-flag" />
       <div className="blue-name">
         <h1>BALAGTAS</h1>
       </div>
       <div className="red-name">
         <h1>LAYAGUE</h1>
       </div>
-      <div className="red-flag">empty</div>
+      <div className="red-flag" />
 
       {/* SCORE CONTROLS + COUNTERS */}
       <div className="blue-score-control-container">
@@ -303,8 +303,8 @@ function Hello(expiryTimestamp) {
           </button>
         </div>
       </div>
-      <div className="blue-footer">footer</div>
-      <div className="red-footer">footer</div>
+      <div className="blue-footer" />
+      <div className="red-footer" />
     </div>
   );
 }

@@ -2,218 +2,223 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
- *{
-  margin:0;
-  padding:0;
- }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
 
- .grid {
-  display:grid;
-  grid-template-rows:repeat(5,1fr);
-  grid-template-columns:repeat(8, 1fr);
+.grid {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   height: 100vh;
-  background-color:white;
- }
- .blue-name{
+  background-color: white;
+}
+.blue-name {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 1;
-  background-color: #3461B9;
- }
- .red-name{
+  background-color: #3461b9;
+}
+.red-name {
   grid-column-start: 5;
   grid-column-end: 8;
   grid-row-start: 1;
   grid-row-end: 1;
-  background-color: #D43838;
- }
- .blue-flag{
+  background-color: #d43838;
+}
+.blue-flag {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-  background-color: #3461B9;
- }
- .red-flag{
+  background-color: #3461b9;
+}
+.red-flag {
   grid-column-start: 8;
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 1;
-  background-color: #D43838;
- }
+  background-color: #d43838;
+}
 
- .blue-score-control-container{
+.blue-score-control-container {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 5;
   background-color: black;
- }
+}
 
- .red-score-control-container{
+.red-score-control-container {
   grid-column-start: 8;
   grid-column-end: 9;
   grid-row-start: 2;
   grid-row-end: 5;
   background-color: black;
- }
+}
 
- 
-
- .blue-score-container{
+.blue-score-container {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 5;
-  background-color: #3461B9;
- }
- .red-score-container{
+  background-color: #3461b9;
+}
+.red-score-container {
   grid-column-start: 6;
   grid-column-end: 8;
   grid-row-start: 2;
   grid-row-end: 5;
-  background-color: #D43838;
- }
+  background-color: #d43838;
+}
 
- .game-mode{
+.game-mode {
   grid-column-start: 4;
   grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 3;
-  background-color:black;
-  color:white;
- }
- .timer{
+  background-color: black;
+  color: white;
+}
+.timer {
   grid-column-start: 4;
   grid-column-end: 6;
   grid-row-start: 3;
   grid-row-end: 4;
-  background-color:black;
-  color:white;
- }
- .timer-control{
+  background-color: black;
+  color: white;
+}
+.timer-control {
   grid-column-start: 4;
   grid-column-end: 6;
   grid-row-start: 4;
   grid-row-end: 5;
-  background-color:black;
-  color:white;
- }
+  background-color: black;
+  color: white;
+}
 
- .blue-gj{
+.blue-gj {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color: #3461B9;
-  color:white;
- }
+  background-color: #3461b9;
+  color: white;
+}
 
- .red-gj{
+.red-gj {
   grid-column-start: 8;
   grid-column-end: 9;
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color: #D43838;
-  color:white;
- }
+  background-color: #d43838;
+  color: white;
+}
 
- .game-mode-control{
+.game-mode-control {
   grid-column-start: 4;
   grid-column-end: 6;
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color:black;
-  color:white;
- }
+  background-color: black;
+  color: white;
+}
 
- .blue-footer{
+.blue-footer {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color: #3461B9;
-  color:white;
- }
+  background-color: #3461b9;
+  color: white;
+}
 
- .red-footer{
+.red-footer {
   grid-column-start: 6;
   grid-column-end: 8;
   grid-row-start: 5;
   grid-row-end: 6;
-  background-color: #D43838;
-  color:white;
- }
- /* NONE GRID PLACEMENT */
+  background-color: #d43838;
+  color: white;
+}
+/* NONE GRID PLACEMENT */
 
- .blue-name>h1,.red-name>h1{
-  display:flex;
+.blue-name > h1,
+.red-name > h1 {
+  display: flex;
   align-items: center;
   justify-content: center;
-  color:white;
-  height:100%;
-   
- }
- 
- .blue-score-container>h1,.red-score-container>h1{
-  justify-content:center;
-  align-items:center;
-  display:flex;
-  height:100%;
+  color: white;
+  height: 100%;
+}
+
+.blue-score-container > h1,
+.red-score-container > h1 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
   font-size: 10rem;
-  color:white;
- }
+  color: white;
+}
 
- .blue-score-control-container,.red-score-control-container{
-  justify-content:center;
-  align-items:center;
-  display:grid
- }
+.blue-score-control-container,
+.red-score-control-container {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
 
-.control>button{
+.control > button {
   padding: 1rem;
-  border:none;
-  margin:0.25rem;
- }
- /* .timer {
+  border: none;
+  margin: 0.25rem;
+}
+/* .timer {
   background-color:white;
  } */
- .roundTracker{
-  display:flex;
+.roundTracker {
+  display: flex;
   justify-content: center;
- }
+}
 
- .round1,.round2,.round3{
-  height:25px;
-  width:25px;
+.round1,
+.round2,
+.round3 {
+  height: 25px;
+  width: 25px;
   margin: 0.5rem;
   border: black solid 2px;
- }
+}
 
- .GJCounter{
+.GJCounter {
   color: white;
- }
+}
 
- .blue-gj,.red-gj{
-  display:flex;
+.blue-gj,
+.red-gj {
+  display: flex;
   align-items: center;
   justify-content: center;
-  color:white;
-  height:100%;
-  flex-direction:column;
- }
- .blue-gj>h1,.red-gj>h1{
-  font-size:3rem;
- }
- .blue-gj>h3,.red-gj>h3{
-  font-size:1rem;
- }
+  color: white;
+  height: 100%;
+  flex-direction: column;
+}
+.blue-gj > h1,
+.red-gj > h1 {
+  font-size: 3rem;
+}
+.blue-gj > h3,
+.red-gj > h3 {
+  font-size: 1rem;
+}
 
- .game-mode>h1{
-  display:flex;
+.game-mode > h1 {
+  display: flex;
   align-items: center;
   justify-content: center;
-  height:100%;
- }
-
+  height: 100%;
+}
