@@ -6,10 +6,10 @@ export default function RoundTracker() {
   const [round3Winner, setRound3Winner] = useState('white');
   function changeRoundWinner(roundWinner: string, setRoundWinner: Function) {
     if (roundWinner === 'white') {
-      setRoundWinner('blue');
+      setRoundWinner('#3461B9');
       console.log('winner blue');
-    } else if (roundWinner === 'blue') {
-      setRoundWinner('red');
+    } else if (roundWinner === '#3461B9') {
+      setRoundWinner('#D43838');
       console.log('winner red');
     } else {
       setRoundWinner('white');
