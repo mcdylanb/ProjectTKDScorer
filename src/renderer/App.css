@@ -98,7 +98,15 @@
   grid-row-end: 5;
   background-color: black;
   color: white;
+  display:flex;
+  flex-direction:column;
 }
+
+.timer-control>button{
+  padding:1rem;
+}
+
+
 
 .blue-gj {
   grid-column-start: 1;
