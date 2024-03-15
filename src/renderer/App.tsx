@@ -217,13 +217,13 @@ function Hello(expiryTimestamp) {
       </div>
       <div className="timer-control">
         <button onClick={start} type="button">
-          Start
+          START
         </button>
         <button onClick={pause} type="button">
-          Pause
+          PAUSE
         </button>
         <button onClick={resume} type="button">
-          Resume
+          RESUME
         </button>
         <button
           // TODO: please move this to own function
@@ -251,16 +251,16 @@ function Hello(expiryTimestamp) {
       {/* GAME MODE */}
       <div className="game-mode-control">
         <button onClick={startGameMode} type="button">
-          Game
+          GAME
         </button>
         <button onClick={startBreakMode} type="button">
-          Break
+          BREAK
         </button>
         <button onClick={identifyWinner} type="button">
-          Choose Winner
+          CHANGE SCORE
         </button>
         <div>
-          <div>
+          {/* <div>
             BLUE REFEREE
             <br />
             <input
@@ -278,8 +278,8 @@ function Hello(expiryTimestamp) {
               value={ref3BlueScore}
               onChange={ref3BlueScoreChange}
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             RED REFEREE
             <br />
             <input
@@ -297,10 +297,10 @@ function Hello(expiryTimestamp) {
               value={ref3RedScore}
               onChange={ref3RedScoreChange}
             />
-          </div>
-          <button onClick={changeRoundScores} type="button">
+          </div> */}
+          {/* <button onClick={changeRoundScores} type="button">
             change scores
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="blue-footer" />
