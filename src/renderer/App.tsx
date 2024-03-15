@@ -260,7 +260,7 @@ function Hello(expiryTimestamp) {
           Choose Winner
         </button>
         <div>
-          <div>
+          {/* <div>
             BLUE REFEREE
             <br />
             <input
@@ -278,8 +278,8 @@ function Hello(expiryTimestamp) {
               value={ref3BlueScore}
               onChange={ref3BlueScoreChange}
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             RED REFEREE
             <br />
             <input
@@ -297,10 +297,10 @@ function Hello(expiryTimestamp) {
               value={ref3RedScore}
               onChange={ref3RedScoreChange}
             />
-          </div>
-          <button onClick={changeRoundScores} type="button">
+          </div> */}
+          {/* <button onClick={changeRoundScores} type="button">
             change scores
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="blue-footer" />
