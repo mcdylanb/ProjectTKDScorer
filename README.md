@@ -1,4 +1,10 @@
 # TKD Scorer
+![image](https://github.com/mcdylanb/ProjectTKDScorer/assets/9720926/fe9661b3-448a-4065-ab06-c7507aa8ed2b)
+Screenshot Taken 2024/03/16
+
+
+### Reason
+- alternative scoring system target to plug and play tournament style without the need of expensive sensors
 ### Prerequisites
 1. NPM
 2. NODEJS
