@@ -133,6 +133,12 @@
   grid-row-end: 6;
   background-color: black;
   color: white;
+  display:flex;
+  flex-direction:column;
+}
+
+.game-mode-control>button {
+  padding:1rem;
 }
 
 .blue-footer {
@@ -177,13 +183,15 @@
 .red-score-control-container {
   justify-content: center;
   align-items: center;
-  display: grid;
+  display: flex;
+  flex-direction:column;
 }
 
 .control > button {
   padding: 1rem;
+  width: 100%;
   border: none;
-  margin: 0.25rem;
+  margin: 0.25rem 0;
 }
 /* .timer {
   background-color:white;
